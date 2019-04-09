@@ -7,7 +7,7 @@ package topunch;
 
 /**
  *
- * @author Senai
+ * @author TI18
  */
 public class ToPunch {
 
