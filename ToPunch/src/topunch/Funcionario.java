@@ -22,11 +22,11 @@ public class Funcionario extends Pessoa{
      }
      
     public boolean cadastrarCliente(Cliente c){
-        
+        return true;
     }
     
     public boolean alterarCliente(Cliente c, Cliente novo){
-        
+        return true;
     }
     
     public Cliente buscarCliente(String cpf){

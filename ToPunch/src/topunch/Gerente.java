@@ -19,10 +19,10 @@ public class Gerente extends Pessoa {
      
      
      public boolean inserirProduto (Produto p){
-         
+         return true;
      }
      public boolean alterarProduto (Produto pNovo,Produto p){
-         
+         return true;
      }
      public void excluirProduto (Produto p){
          

@@ -11,31 +11,31 @@ package topunch;
  */
 public class ControladorBanco {
     public boolean inserirProduto (Produto p){
-        
+        return true;
     }  
     public boolean alterarProduto(Produto p,Produto pNovo){
-        
+        return true;
     }
     public Produto buscarProduto(int id){
         
     }
     public boolean deletarProduto(){
-        
+        return true;
     }
     public boolean inserirCliente(Cliente c){
-        
+        return true;
     }
     public boolean alterarCliente(Cliente c, Cliente cNovo){
-        
+        return true;
     }
     public Cliente buscarCliente(){
         
     }
     public boolean deletarCliente(Cliente c){
-        
+        return true;
     }
     public boolean inserirPedido(Pedido p){
-        
+        return true;
     }
     public boolean alterarProduto(Pedido p, Pedido pNovo){
         

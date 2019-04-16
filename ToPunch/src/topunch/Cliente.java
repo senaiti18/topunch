@@ -15,9 +15,9 @@ public class Cliente extends Pessoa {
     }
     
     public boolean comprar (Produto p){
-      
+      return true;
     }
     public boolean pagar (float valor){
-        
+        return true;
     }
 }
