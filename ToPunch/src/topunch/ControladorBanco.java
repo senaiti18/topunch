@@ -44,6 +44,6 @@ public class ControladorBanco {
         
     }
     public boolean deletarPedido(Pedido p){
-        
+        return true;
     }
 }
