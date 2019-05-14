@@ -29,13 +29,13 @@ public class Funcionario extends Pessoa{
         return true;
     }
     
-    public Cliente buscarCliente(String cpf){
+   // public Cliente buscarCliente(String cpf){
         
-    }
+   // }
     
-    public Produto buscarProduto(int id){
+   // public Produto buscarProduto(int id){
         
-    }
+   // }
 
     public int getGERENTE() {
         return GERENTE;

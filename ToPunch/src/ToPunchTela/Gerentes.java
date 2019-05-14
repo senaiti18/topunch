@@ -1,3 +1,11 @@
+
+import ToPunchTela.AtualizarFuncionario;
+import ToPunchTela.Caixa;
+import ToPunchTela.ConsultarCliente;
+import ToPunchTela.DeletarFuncionario;
+import ToPunchTela.Departamentos;
+import ToPunchTela.Horarios;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -39,16 +47,16 @@ public class Gerentes extends javax.swing.JFrame {
         menuPedidosDeletar = new javax.swing.JMenuItem();
         menuPedidosConsultar = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuHorarios = new javax.swing.JMenuItem();
+        menuDpt = new javax.swing.JMenuItem();
+        menuFuncionariosAdd = new javax.swing.JMenuItem();
+        menuFuncionariosDelete = new javax.swing.JMenuItem();
+        menuFuncionarioUpdate = new javax.swing.JMenuItem();
+        menuFuncionariosSearch = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        menuEntrega = new javax.swing.JMenuItem();
+        JCaixa = new javax.swing.JMenu();
+        menuCaixa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,7 +64,7 @@ public class Gerentes extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 398, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,6 +126,11 @@ public class Gerentes extends javax.swing.JFrame {
 
         menuPedidosAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/page_edit.png"))); // NOI18N
         menuPedidosAtualizar.setText("Atualizar");
+        menuPedidosAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPedidosAtualizarActionPerformed(evt);
+            }
+        });
         jMenu2.add(menuPedidosAtualizar);
 
         menuPedidosDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/page_delete.png"))); // NOI18N
@@ -138,34 +151,54 @@ public class Gerentes extends javax.swing.JFrame {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/group.png"))); // NOI18N
         jMenu3.setText("Funcionarios");
 
-        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/clock.png"))); // NOI18N
-        jMenuItem9.setText("Horarios");
-        jMenu3.add(jMenuItem9);
-
-        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/building.png"))); // NOI18N
-        jMenuItem11.setText("Departamentos");
-        jMenu3.add(jMenuItem11);
-
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_add.png"))); // NOI18N
-        jMenuItem1.setText("Adicionar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        menuHorarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/clock.png"))); // NOI18N
+        menuHorarios.setText("Horarios");
+        menuHorarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                menuHorariosActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu3.add(menuHorarios);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_delete.png"))); // NOI18N
-        jMenuItem2.setText("Deletar");
-        jMenu3.add(jMenuItem2);
+        menuDpt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/building.png"))); // NOI18N
+        menuDpt.setText("Departamentos");
+        menuDpt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDptActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuDpt);
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_edit.png"))); // NOI18N
-        jMenuItem3.setText("Atualizar");
-        jMenu3.add(jMenuItem3);
+        menuFuncionariosAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_add.png"))); // NOI18N
+        menuFuncionariosAdd.setText("Adicionar");
+        menuFuncionariosAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFuncionariosAddActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuFuncionariosAdd);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
-        jMenuItem4.setText("Consultar");
-        jMenu3.add(jMenuItem4);
+        menuFuncionariosDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_delete.png"))); // NOI18N
+        menuFuncionariosDelete.setText("Deletar");
+        menuFuncionariosDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFuncionariosDeleteActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuFuncionariosDelete);
+
+        menuFuncionarioUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_edit.png"))); // NOI18N
+        menuFuncionarioUpdate.setText("Atualizar");
+        menuFuncionarioUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFuncionarioUpdateActionPerformed(evt);
+            }
+        });
+        jMenu3.add(menuFuncionarioUpdate);
+
+        menuFuncionariosSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
+        menuFuncionariosSearch.setText("Consultar");
+        jMenu3.add(menuFuncionariosSearch);
 
         jMenuBar1.add(jMenu3);
 
@@ -177,30 +210,30 @@ public class Gerentes extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/package.png"))); // NOI18N
-        jMenuItem12.setText("Entregas");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+        menuEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/package.png"))); // NOI18N
+        menuEntrega.setText("Entregas");
+        menuEntrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem12ActionPerformed(evt);
+                menuEntregaActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem12);
+        jMenu4.add(menuEntrega);
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/money.png"))); // NOI18N
-        jMenu5.setText("Caixa");
+        JCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/money.png"))); // NOI18N
+        JCaixa.setText("Caixa");
 
-        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/money.png"))); // NOI18N
-        jMenuItem10.setText("Caixa");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        menuCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/money.png"))); // NOI18N
+        menuCaixa.setText("Caixa");
+        menuCaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                menuCaixaActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem10);
+        JCaixa.add(menuCaixa);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(JCaixa);
 
         setJMenuBar(jMenuBar1);
 
@@ -216,17 +249,18 @@ public class Gerentes extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
         
     }//GEN-LAST:event_jMenu4ActionPerformed
 
-    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+    private void menuEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntregaActionPerformed
             Entregas ent = new Entregas();
             jDesktopPane1.add(ent);
             ent.setVisible(true);
-    }//GEN-LAST:event_jMenuItem12ActionPerformed
+    }//GEN-LAST:event_menuEntregaActionPerformed
 
     private void menuClientesAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesAdicionarActionPerformed
             CadastroCliente cad = new CadastroCliente();
@@ -240,12 +274,10 @@ public class Gerentes extends javax.swing.JFrame {
             atu.setVisible(true);
     }//GEN-LAST:event_menuClientesAtualizarActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
-
     private void menuPedidosDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosDeletarActionPerformed
-        // TODO add your handling code here:
+        DeletarCliente delCli = new DeletarCliente();
+        jDesktopPane1.add(delCli);
+        delCli.setVisible(true);
     }//GEN-LAST:event_menuPedidosDeletarActionPerformed
 
     private void menuClientesDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesDeletarActionPerformed
@@ -255,7 +287,9 @@ public class Gerentes extends javax.swing.JFrame {
     }//GEN-LAST:event_menuClientesDeletarActionPerformed
 
     private void menuClientesConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesConsultarActionPerformed
-        // TODO add your handling code here:
+        ConsultarCliente consulCli = new ConsultarCliente();
+        jDesktopPane1.add(consulCli);
+        consulCli.setVisible(true);
     }//GEN-LAST:event_menuClientesConsultarActionPerformed
 
     private void menuPedidosAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosAdicionarActionPerformed
@@ -264,11 +298,47 @@ public class Gerentes extends javax.swing.JFrame {
         adc.setVisible(true);
     }//GEN-LAST:event_menuPedidosAdicionarActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void menuFuncionariosAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFuncionariosAddActionPerformed
         AdicionarFuncionario adcFun = new AdicionarFuncionario();
         jDesktopPane1.add(adcFun);
         adcFun.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_menuFuncionariosAddActionPerformed
+
+    private void menuDptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDptActionPerformed
+     Departamentos dept = new Departamentos();
+     jDesktopPane1.add(dept);
+     dept.setVisible(true);
+    }//GEN-LAST:event_menuDptActionPerformed
+
+    private void menuFuncionariosDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFuncionariosDeleteActionPerformed
+        DeletarFuncionario func = new DeletarFuncionario();
+     jDesktopPane1.add(func);
+     func.setVisible(true);
+    }//GEN-LAST:event_menuFuncionariosDeleteActionPerformed
+
+    private void menuFuncionarioUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFuncionarioUpdateActionPerformed
+     AtualizarFuncionario atua = new AtualizarFuncionario();
+     jDesktopPane1.add(atua);
+     atua.setVisible(true);
+    }//GEN-LAST:event_menuFuncionarioUpdateActionPerformed
+
+    private void menuHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHorariosActionPerformed
+        Horarios hora = new Horarios();
+        jDesktopPane1.add(hora);
+        hora.setVisible(true);
+    }//GEN-LAST:event_menuHorariosActionPerformed
+
+    private void menuCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCaixaActionPerformed
+        Caixa cxa = new Caixa();
+        jDesktopPane1.add(cxa);
+        cxa.setVisible(true);
+    }//GEN-LAST:event_menuCaixaActionPerformed
+
+    private void menuPedidosAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosAtualizarActionPerformed
+        AtualizarFuncionario atuFun = new AtualizarFuncionario();
+        jDesktopPane1.add(atuFun);
+        atuFun.setVisible(true);
+    }//GEN-LAST:event_menuPedidosAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,25 +376,25 @@ public class Gerentes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu JCaixa;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem menuCaixa;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenuItem menuClientesAdicionar;
     private javax.swing.JMenuItem menuClientesAtualizar;
     private javax.swing.JMenuItem menuClientesConsultar;
     private javax.swing.JMenuItem menuClientesDeletar;
+    private javax.swing.JMenuItem menuDpt;
+    private javax.swing.JMenuItem menuEntrega;
+    private javax.swing.JMenuItem menuFuncionarioUpdate;
+    private javax.swing.JMenuItem menuFuncionariosAdd;
+    private javax.swing.JMenuItem menuFuncionariosDelete;
+    private javax.swing.JMenuItem menuFuncionariosSearch;
+    private javax.swing.JMenuItem menuHorarios;
     private javax.swing.JMenuItem menuPedidosAdicionar;
     private javax.swing.JMenuItem menuPedidosAtualizar;
     private javax.swing.JMenuItem menuPedidosConsultar;

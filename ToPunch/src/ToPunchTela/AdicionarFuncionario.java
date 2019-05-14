@@ -45,6 +45,8 @@ public class AdicionarFuncionario extends javax.swing.JInternalFrame {
         jTextField8 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel1.setText("Nome:");
 
         jLabel2.setText("CPF:");
