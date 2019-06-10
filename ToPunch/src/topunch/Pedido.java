@@ -18,16 +18,16 @@ public class Pedido {
     private ArrayList<Produto> aProdutos;
     private Cliente cliente;
     private int status;
-    private int id;
+    
 
-    public Pedido(int ABERTO, int FECHADO, int PAGO, ArrayList<Produto> aProdutos, Cliente cliente, int status, int id) {
+    public Pedido(int ABERTO, int FECHADO, int PAGO, Produto aProdutos, Cliente cliente, int status) {
         this.ABERTO = ABERTO;
         this.FECHADO = FECHADO;
         this.PAGO = PAGO;
-        this.aProdutos = aProdutos;
+        this.aProdutos.add(aProdutos);
         this.cliente = cliente;
         this.status = status;
-        this.id = id;
+        
     }
 
     public int getABERTO() {
@@ -84,13 +84,7 @@ public class Pedido {
     }
     
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
     
     
 }

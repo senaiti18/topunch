@@ -11,8 +11,8 @@ package topunch;
  */
 public class ClienteEspecial extends Cliente {
 
-    public ClienteEspecial(String nome, String endereco, String telefone, int id) {
-        super(nome, endereco, telefone, id);
+    public ClienteEspecial(String nome, String endereco, String telefone) {
+        super(nome, endereco, telefone);
     }
 
     

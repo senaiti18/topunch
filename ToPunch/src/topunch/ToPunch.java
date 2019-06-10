@@ -17,7 +17,7 @@ public class ToPunch {
     public static void main(String[] args) {
         System.out.println("oi 3");
         System.out.println("linha adicionada");
-        Gerente pes = new Gerente("Soranzo", "endereco", "telefone", 0);
+        Gerente pes = new Gerente("Soranzo", "endereco", "telefone");
         System.out.println(pes.getNome());
         
         

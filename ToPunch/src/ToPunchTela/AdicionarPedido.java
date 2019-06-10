@@ -1,3 +1,9 @@
+
+import topunch.Cliente;
+import topunch.ControladorBanco;
+import topunch.Pedido;
+import topunch.Produto;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,9 +16,7 @@
  */
 public class AdicionarPedido extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AdicionarPedido
-     */
+    ControladorBanco ctrl;
     public AdicionarPedido() {
         initComponents();
     }
@@ -26,23 +30,52 @@ public class AdicionarPedido extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        groupPerecivel = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        txtDataEntrega = new javax.swing.JTextField();
+        txtConfirmar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        rdbPerecivel = new javax.swing.JRadioButton();
+        rdbNãoPerecivel = new javax.swing.JRadioButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtNomeProduto = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtValor = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtCategoria = new javax.swing.JTextField();
 
         setClosable(true);
 
         jLabel1.setText("CPF:");
 
-        jLabel2.setText("Pedido:");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Produto:");
 
         jLabel3.setText("Data de entrega:");
 
-        jButton1.setText("Confirmar");
+        txtConfirmar.setText("Confirmar");
+        txtConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConfirmarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Perecível:");
+
+        groupPerecivel.add(rdbPerecivel);
+        rdbPerecivel.setText("Perecível");
+
+        groupPerecivel.add(rdbNãoPerecivel);
+        rdbNãoPerecivel.setText("Não-perecível");
+
+        jLabel5.setText("Nome:");
+
+        jLabel6.setText("Valor:");
+
+        jLabel7.setText("Categoria:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,51 +88,105 @@ public class AdicionarPedido extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1)
+                                        .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                        .addComponent(txtNomeProduto))
+                                    .addComponent(jLabel6)
+                                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
                                 .addGap(72, 72, 72)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rdbPerecivel)
+                                    .addComponent(jLabel4)
+                                    .addComponent(rdbNãoPerecivel)
+                                    .addComponent(txtConfirmar)))
                             .addComponent(jLabel2))
                         .addContainerGap(42, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5)
+                            .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rdbPerecivel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rdbNãoPerecivel)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtConfirmar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarActionPerformed
+        //Buscar o cliente pelo CPF no banco de dados
+        Cliente cliente = new Cliente("Soranzo", "Rua San Jan", "123456789");
+        if (rdbPerecivel.isSelected()) {
+            Produto newProd = new Produto(1, 0, txtNomeProduto.getText(), txtValor.getText()
+                    , Integer.valueOf(txtCategoria.getText()));
+            Pedido newPed = new Pedido(1, 0, 0, newProd, cliente, 0);
+            ctrl.inserirPedido(newPed);
+        }
+        else{
+            Produto newProd = new Produto(0, 1, txtNomeProduto.getText(), txtValor.getText()
+                    , Integer.valueOf(txtCategoria.getText()));
+            Pedido newPed = new Pedido(1, 0, 0, newProd, cliente, 0);
+            ctrl.inserirPedido(newPed);
+        }
+        
+    }//GEN-LAST:event_txtConfirmarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup groupPerecivel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JRadioButton rdbNãoPerecivel;
+    private javax.swing.JRadioButton rdbPerecivel;
+    private javax.swing.JTextField txtCPF;
+    private javax.swing.JTextField txtCategoria;
+    private javax.swing.JButton txtConfirmar;
+    private javax.swing.JTextField txtDataEntrega;
+    private javax.swing.JTextField txtNomeProduto;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

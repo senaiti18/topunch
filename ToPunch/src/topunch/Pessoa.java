@@ -13,13 +13,13 @@ public class Pessoa {
     private String  nome;
     private String endereco;
     private String telefone;
-    private int id;
+    
 
-    public Pessoa(String nome, String endereco, String telefone, int id) {
+    public Pessoa(String nome, String endereco, String telefone) {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-        this.id = id;
+        
     }
 
     public String getNome() {
@@ -46,13 +46,7 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
     
     
     

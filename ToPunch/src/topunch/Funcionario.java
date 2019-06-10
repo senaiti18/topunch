@@ -17,8 +17,8 @@ public class Funcionario extends Pessoa{
     private String login;
     private String senha;
 
-     public Funcionario (String nome,String endereco,String telefone,int id){
-        super(nome,endereco,telefone,id);
+     public Funcionario (String nome,String endereco,String telefone){
+        super(nome,endereco,telefone);
      }
      
     public boolean cadastrarCliente(Cliente c){

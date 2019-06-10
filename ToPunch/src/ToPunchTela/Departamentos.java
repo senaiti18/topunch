@@ -32,6 +32,8 @@ public class Departamentos extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        setClosable(true);
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Financeiro", "Cozinha", "Gerência" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

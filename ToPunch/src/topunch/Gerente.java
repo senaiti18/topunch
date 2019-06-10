@@ -13,8 +13,8 @@ public class Gerente extends Pessoa {
     
     
     
-     public Gerente (String nome,String endereco,String telefone,int id){
-        super(nome,endereco,telefone,id);
+     public Gerente (String nome,String endereco,String telefone){
+        super(nome,endereco,telefone);
      }
      
      

@@ -17,15 +17,15 @@ public class Produto {
     private String nome;
     private String valor;
     private int categoria;
-    private int id;
+    
 
-    public Produto(int perecivel, int nao_perecivel, String nome, String valor, int categoria, int id) {
+    public Produto(int perecivel, int nao_perecivel, String nome, String valor, int categoria) {
         this.perecivel = perecivel;
         this.nao_perecivel = nao_perecivel;
         this.nome = nome;
         this.valor = valor;
         this.categoria = categoria;
-        this.id = id;
+        
     }
 
     public int getPerecivel() {
@@ -68,13 +68,7 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
     
     
     

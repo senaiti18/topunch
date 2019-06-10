@@ -22,7 +22,7 @@ public class ControladorBanco {
     public boolean deletarProduto(){
         return true;
     }
-    public boolean inserirCliente(Cliente c){
+    public boolean inserirCliente(Cliente c,String CPF, String CEP, String dataNasc, String Sexo){
         return true;
     }
     public boolean alterarCliente(Cliente c, Cliente cNovo){
@@ -34,16 +34,30 @@ public class ControladorBanco {
     public boolean deletarCliente(Cliente c){
         return true;
     }
+    
     public boolean inserirPedido(Pedido p){
         return true;
     }
-   // public boolean alterarProduto(Pedido p, Pedido pNovo){
-        
-   // }
+    
+    public boolean alterarProduto(Pedido p, Pedido pNovo){
+        return true;
+    }
   //  public Pedido buscarPedido(int id){
         
    // }
     public boolean deletarPedido(Pedido p){
         return true;
     }
+    
+    public boolean adicionarFuncionario(Funcionario f,String DataNasc, String cargo, String departamento,double salario){
+        return true;
+    }
+    
+    public boolean deletarFuncionario(Funcionario f){
+        return true;
+    }
+    
+    //public Funcionario consultarFuncionario(Funcionario f){
+        
+    //}
 }
