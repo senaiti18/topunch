@@ -106,6 +106,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuPedidosConsultarActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -209,6 +212,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="AdicionarProd">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagem/package_add.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Adicionar"/>
               </Properties>
               <Events>
@@ -217,6 +223,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagem/zoom.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
               <Events>
@@ -225,6 +234,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagem/package_delete.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Remover"/>
               </Properties>
               <Events>
@@ -233,8 +245,14 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagem/package_link.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Atualizar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

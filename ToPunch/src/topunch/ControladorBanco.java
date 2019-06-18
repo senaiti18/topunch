@@ -100,8 +100,27 @@ public class ControladorBanco {
         }
     }
     
-    public boolean alterarProduto(Produto p,Produto pNovo){
-        return true;
+    public void alterarProduto(Produto p){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            
+            stmt = con.prepareStatement("UPDATE produto set valor = ?,categoria = ?, perecivel = ? WHERE nome = ?");
+            stmt.setInt(1, p.getValor());
+            stmt.setString(2, p.getCategoria());
+            stmt.setBoolean(3, p.getPerecivel());
+            stmt.setString(4, p.getNome());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
+                    
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }
 
     public void inserirCliente(Cliente c){
@@ -187,19 +206,254 @@ public class ControladorBanco {
         }
     }
     
-    public boolean alterarCliente(Cliente c, Cliente cNovo){
-        return true;
+    public void alterarCliente(Cliente c){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("UPDATE cliente set nome = ?,endereco = ?,telefone = ?, cep = ?,dataNasc = ? WHERE cpf = ?");
+            stmt.setString(1, c.getNome());
+            stmt.setString(2, c.getEndereco());
+            stmt.setString(3, c.getTelefone());
+            stmt.setString(4, c.getCep());
+            stmt.setString(5, c.getDataNasc());
+            stmt.setString(6, c.getCpf());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
+                    
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }
     
     public void inserirPedido(Pedido p){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
         
+        try {
+            stmt = con.prepareStatement("INSERT INTO pedido (nomeProduto,cpfCliente,status,dataEntrega,quantidade)VALUES(?,?,?,?,?)");
+            stmt.setString(1, p.getNomeProdutos());
+            stmt.setString(2, p.getCliente());
+            stmt.setString(3, p.getStatus());
+            stmt.setString(4, p.getDataDeEntrega());
+            stmt.setInt(5, p.getQuantidade());
+            
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorBanco.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao salvar!"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }
     
-  //  public Pedido buscarPedido(int id){
+    public void alterarPedido(Pedido p){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
         
-   // }
-    public boolean deletarPedido(Pedido p){
-        return true;
+        try {
+            System.out.println("1");
+            stmt = con.prepareStatement("UPDATE pedido set nomeProduto = ?,cpfCliente = ?, status = ?, dataEntrega = ?, quantidade = ? WHERE cpfCliente = ? and dataEntrega = ?");
+            stmt.setString(1, p.getNomeProdutos());
+            stmt.setString(2, p.getCliente());
+            stmt.setString(3, p.getStatus());
+            stmt.setString(4, p.getDataDeEntrega());
+            stmt.setInt(5, p.getQuantidade());
+            stmt.setString(6, p.getCliente());
+            stmt.setString(7, p.getDataDeEntrega());
+            System.out.println("2");
+            stmt.executeUpdate();
+            System.out.println("2");
+            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
+            System.out.println("3");
+                    
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public List<Pedido> buscarPedidoAberto(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Pedido> pedidos = new ArrayList<>();
+        
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM pedido Where status = \"Processo de Fabricação\"");
+            rs = stmt.executeQuery();
+            
+            
+            while (rs.next()) {                
+                Pedido ped = new Pedido("","","",0,"");
+                ped.setNomeProdutos(rs.getString("nomeProduto"));
+                ped.setCliente(rs.getString("cpfCliente"));
+                ped.setStatus(rs.getString("status"));
+                ped.setDataDeEntrega(rs.getString("dataEntrega"));
+                ped.setQuantidade(rs.getInt("quantidade"));
+                
+                pedidos.add(ped);
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Sucesso na query");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no query"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return pedidos;
+    }
+    
+    public List<Pedido> buscarPedidosFechados(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Pedido> pedidos = new ArrayList<>();
+        
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM pedido Where status = \"Entregue\"");
+            rs = stmt.executeQuery();
+            
+            
+            while (rs.next()) {                
+                Pedido ped = new Pedido("","","",0,"");
+                ped.setNomeProdutos(rs.getString("nomeProduto"));
+                ped.setCliente(rs.getString("cpfCliente"));
+                ped.setStatus(rs.getString("status"));
+                ped.setDataDeEntrega(rs.getString("dataEntrega"));
+                ped.setQuantidade(rs.getInt("quantidade"));
+                
+                pedidos.add(ped);
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Sucesso na query");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no query"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return pedidos;
+    }
+    
+    public List<Pedido> buscarPedidoEspecificoFecha(String cpf){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Pedido> pedidos = new ArrayList<>();
+        
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM pedido Where cpfCliente = ? and status = ?");
+            System.out.println(stmt);
+            stmt.setString(1, cpf );
+            stmt.setString(2, "Entregue");
+            rs = stmt.executeQuery();
+            
+            
+            while (rs.next()) {                
+                Pedido ped = new Pedido("","","",0,"");
+                ped.setNomeProdutos(rs.getString("nomeProduto"));
+                ped.setCliente(rs.getString("cpfCliente"));
+                ped.setStatus(rs.getString("status"));
+                ped.setDataDeEntrega(rs.getString("dataEntrega"));
+                ped.setQuantidade(rs.getInt("quantidade"));
+                System.out.println(ped.getNomeProdutos());
+                pedidos.add(ped);
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Sucesso na query");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no query"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return pedidos;
+    }
+    
+    public List<Pedido> buscarPedidoEspecificoAber(String cpf){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Pedido> pedidos = new ArrayList<>();
+        
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM pedido Where cpfCliente = ? and status = ?");
+            System.out.println(stmt);
+            stmt.setString(1, cpf );
+            stmt.setString(2, "Processo de Fabricação");
+            rs = stmt.executeQuery();
+            
+            
+            while (rs.next()) {                
+                Pedido ped = new Pedido("","","",0,"");
+                ped.setNomeProdutos(rs.getString("nomeProduto"));
+                ped.setCliente(rs.getString("cpfCliente"));
+                ped.setStatus(rs.getString("status"));
+                ped.setDataDeEntrega(rs.getString("dataEntrega"));
+                ped.setQuantidade(rs.getInt("quantidade"));
+                System.out.println(ped.getNomeProdutos());
+                pedidos.add(ped);
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Sucesso na query");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no query"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return pedidos;
+    }
+    
+    public void deletarPedido(String cpf, String data, String nomeProd){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("DELETE FROM pedido WHERE cpfCliente = ? and nomeProduto = ? and dataEntrega = ?");
+            stmt.setString(1, cpf);
+            stmt.setString(2, nomeProd);
+            stmt.setString(3, data);
+            System.out.println(stmt);
+            stmt.executeUpdate();
+            System.out.println("1");
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+                    
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluido!");
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }
     
     public void adicionarFuncionario(Funcionario f){
@@ -283,6 +537,32 @@ public class ControladorBanco {
                     
             } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao Excluido!");
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public void atualizarFuncionario(Funcionario f){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("UPDATE funcionario set nome = ?,endereco = ?,telefone = ?, cep = ?,dataNasc = ?,cargo = ?, salario = ? WHERE cpf = ?");
+            stmt.setString(1, f.getNome());
+            stmt.setString(2, f.getEndereco());
+            stmt.setString(3, f.getTelefone());
+            stmt.setString(4, f.getCep());
+            stmt.setString(5, f.getDataNasc());
+            stmt.setString(6, f.getCargo());
+            stmt.setDouble(7, f.getSalario());
+            stmt.setString(8, f.getCpf());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Atualizado com Sucesso!");
+                    
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
         }finally{
             ConnectionFactory.closeConnection(con, stmt);
         }

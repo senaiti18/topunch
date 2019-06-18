@@ -197,11 +197,7 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtNome.setEnabled(false);
-
         jLabel8.setText("CPF:");
-
-        txtCep.setEnabled(false);
 
         jButton3.setText("Consultar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -213,10 +209,6 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
         jLabel9.setText("Data de nascimento:");
 
         jLabel10.setText("Endereço:");
-
-        txtDate.setEnabled(false);
-
-        txtEnd.setEnabled(false);
 
         jLabel12.setText("CEP:");
 

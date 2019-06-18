@@ -23,7 +23,7 @@ public class Produto {
         this.categoria = categoria;
         this.perecivel = perecivel;
     }
-   
+
 
     public boolean getPerecivel() {
         return perecivel;

@@ -12,48 +12,60 @@ import java.util.ArrayList;
  * @author Senai
  */
 public class Pedido {
-    private ArrayList<Produto> aProdutos;
-    private Cliente cliente;
-    private int status;
+    private String NomeProdutos;
+    private String cliente;
+    private String dataDeEntrega;
+    private int quantidade;
+    private String status;
 
-    public Pedido(ArrayList<Produto> aProdutos, Cliente cliente, int status) {
-        this.aProdutos = aProdutos;
+    public Pedido(String NomeProdutos, String cliente, String dataDeEntrega, int quantidade, String status) {
+        this.NomeProdutos = NomeProdutos;
         this.cliente = cliente;
+        this.dataDeEntrega = dataDeEntrega;
+        this.quantidade = quantidade;
         this.status = status;
     }
-    
 
-    
-    
-
-    public ArrayList<Produto> getaProdutos() {
-        return aProdutos;
+    public String getNomeProdutos() {
+        return NomeProdutos;
     }
 
-    public void setaProdutos(ArrayList<Produto> aProdutos) {
-        this.aProdutos = aProdutos;
+    public void setNomeProdutos(String NomeProdutos) {
+        this.NomeProdutos = NomeProdutos;
     }
-    
 
-    public Cliente getCliente() {
+    public String getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
-    
 
-    public int getStatus() {
+    public String getDataDeEntrega() {
+        return dataDeEntrega;
+    }
+
+    public void setDataDeEntrega(String dataDeEntrega) {
+        this.dataDeEntrega = dataDeEntrega;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
-    
 
-    
     
     
 }

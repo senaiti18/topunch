@@ -1,13 +1,18 @@
 
 import ToPunchTela.AdicionarProduto;
+import ToPunchTela.AtualiazarPedido;
 import ToPunchTela.AtualizarFuncionario;
+import ToPunchTela.AtualizarProduto;
 import ToPunchTela.Caixa;
 import ToPunchTela.ConsultarCliente;
 import ToPunchTela.ConsultarFuncionario;
+import ToPunchTela.ConsultarPedido;
 import ToPunchTela.ConsultarProduto;
 import ToPunchTela.DeletarFuncionario;
+import ToPunchTela.DeletarPedido;
 import ToPunchTela.DeletarProduto;
 import ToPunchTela.Departamentos;
+import ToPunchTela.Entregas;
 import ToPunchTela.Horarios;
 
 /*
@@ -152,6 +157,11 @@ public class Gerentes extends javax.swing.JFrame {
 
         menuPedidosConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
         menuPedidosConsultar.setText("Consultar");
+        menuPedidosConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPedidosConsultarActionPerformed(evt);
+            }
+        });
         jMenu2.add(menuPedidosConsultar);
 
         jMenuBar1.add(jMenu2);
@@ -232,6 +242,7 @@ public class Gerentes extends javax.swing.JFrame {
         });
         jMenu4.add(menuEntrega);
 
+        AdicionarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/package_add.png"))); // NOI18N
         AdicionarProd.setText("Adicionar");
         AdicionarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,6 +251,7 @@ public class Gerentes extends javax.swing.JFrame {
         });
         jMenu4.add(AdicionarProd);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/zoom.png"))); // NOI18N
         jMenuItem1.setText("Consultar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +260,7 @@ public class Gerentes extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem1);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/package_delete.png"))); // NOI18N
         jMenuItem2.setText("Remover");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,7 +269,13 @@ public class Gerentes extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem2);
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagem/package_link.png"))); // NOI18N
         jMenuItem3.setText("Atualizar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem3);
 
         jMenuBar1.add(jMenu4);
@@ -315,9 +334,9 @@ public class Gerentes extends javax.swing.JFrame {
     }//GEN-LAST:event_menuClientesAtualizarActionPerformed
 
     private void menuPedidosDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosDeletarActionPerformed
-        DeletarCliente delCli = new DeletarCliente();
-        jDesktopPane1.add(delCli);
-        delCli.setVisible(true);
+        DeletarPedido delPed = new DeletarPedido();
+        jDesktopPane1.add(delPed);
+        delPed.setVisible(true);
     }//GEN-LAST:event_menuPedidosDeletarActionPerformed
 
     private void menuClientesDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesDeletarActionPerformed
@@ -375,7 +394,7 @@ public class Gerentes extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCaixaActionPerformed
 
     private void menuPedidosAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosAtualizarActionPerformed
-        AtualizarFuncionario atuFun = new AtualizarFuncionario();
+        AtualiazarPedido atuFun = new AtualiazarPedido();
         jDesktopPane1.add(atuFun);
         atuFun.setVisible(true);
     }//GEN-LAST:event_menuPedidosAtualizarActionPerformed
@@ -403,6 +422,18 @@ public class Gerentes extends javax.swing.JFrame {
         jDesktopPane1.add(delProd);
         delProd.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        AtualizarProduto atuaProd = new AtualizarProduto();
+        jDesktopPane1.add(atuaProd);
+        atuaProd.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void menuPedidosConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosConsultarActionPerformed
+        ConsultarPedido consultPed = new ConsultarPedido();
+        jDesktopPane1.add(consultPed);
+        consultPed.setVisible(true);
+    }//GEN-LAST:event_menuPedidosConsultarActionPerformed
 
     /**
      * @param args the command line arguments
