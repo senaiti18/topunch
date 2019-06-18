@@ -14,8 +14,8 @@ import java.util.Date;
 public class ProdutoPerecivel extends Produto {
     private Date validade;
 
-    public ProdutoPerecivel(Date validade, int perecivel, int nao_perecivel, String nome, String valor, int categoria) {
-        super(perecivel, nao_perecivel, nome, valor, categoria);
+    public ProdutoPerecivel(Date validade, String nome, int valor, String categoria, boolean perecivel) {
+        super(nome, valor, categoria, perecivel);
         this.validade = validade;
     }
 

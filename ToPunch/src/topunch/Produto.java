@@ -12,36 +12,25 @@ import java.util.logging.Logger;
  * @author Senai
  */
 public class Produto {
-    private int perecivel;
-    private int nao_perecivel;
+    private boolean perecivel;
     private String nome;
-    private String valor;
-    private int categoria;
-    
+    private int valor;
+    private String categoria;
 
-    public Produto(int perecivel, int nao_perecivel, String nome, String valor, int categoria) {
-        this.perecivel = perecivel;
-        this.nao_perecivel = nao_perecivel;
+    public Produto(String nome, int valor, String categoria, boolean perecivel) {
         this.nome = nome;
         this.valor = valor;
         this.categoria = categoria;
-        
+        this.perecivel = perecivel;
     }
+   
 
-    public int getPerecivel() {
+    public boolean getPerecivel() {
         return perecivel;
     }
 
-    public void setPerecivel(int perecivel) {
+    public void setPerecivel(boolean perecivel) {
         this.perecivel = perecivel;
-    }
-
-    public int getNao_perecivel() {
-        return nao_perecivel;
-    }
-
-    public void setNao_perecivel(int nao_perecivel) {
-        this.nao_perecivel = nao_perecivel;
     }
 
     public String getNome() {
@@ -52,19 +41,19 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getValor() {
+    public int getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(int valor) {
         this.valor = valor;
     }
 
-    public int getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 

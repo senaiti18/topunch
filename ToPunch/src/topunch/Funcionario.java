@@ -10,16 +10,17 @@ package topunch;
  * @author Senai
  */
 public class Funcionario extends Pessoa{
-    private int GERENTE;
-    private int ATENDENTE;
-    private int COLABORADOR;
-    private int nivelAcesso;
+    private String cargo;
+    private double salario;
     private String login;
     private String senha;
 
-     public Funcionario (String nome,String endereco,String telefone){
-        super(nome,endereco,telefone);
-     }
+    public Funcionario(String cargo, double salario, String nome, String endereco, String telefone, String cpf, String cep, String dataNasc) {
+        super(nome, endereco, telefone, cpf, cep, dataNasc);
+        this.cargo = cargo;
+        this.salario = salario;
+    }
+
      
     public boolean cadastrarCliente(Cliente c){
         return true;
@@ -37,38 +38,6 @@ public class Funcionario extends Pessoa{
         
    // }
 
-    public int getGERENTE() {
-        return GERENTE;
-    }
-
-    public void setGERENTE(int GERENTE) {
-        this.GERENTE = GERENTE;
-    }
-
-    public int getATENDENTE() {
-        return ATENDENTE;
-    }
-
-    public void setATENDENTE(int ATENDENTE) {
-        this.ATENDENTE = ATENDENTE;
-    }
-
-    public int getCOLABORADOR() {
-        return COLABORADOR;
-    }
-
-    public void setCOLABORADOR(int COLABORADOR) {
-        this.COLABORADOR = COLABORADOR;
-    }
-
-    public int getNivelAcesso() {
-        return nivelAcesso;
-    }
-
-    public void setNivelAcesso(int nivelAcesso) {
-        this.nivelAcesso = nivelAcesso;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -84,5 +53,22 @@ public class Funcionario extends Pessoa{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(double salario) {
+        this.salario = salario;
+    }
+    
     
 }

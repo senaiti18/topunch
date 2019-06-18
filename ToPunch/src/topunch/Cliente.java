@@ -10,10 +10,11 @@ package topunch;
  * @author Senai
  */
 public class Cliente extends Pessoa {
-     public Cliente (String nome,String endereco,String telefone){
-      super(nome,endereco,telefone);
-    }
     
+    public Cliente(String nome, String endereco, String telefone, String cpf, String cep, String dataNasc) {
+        super(nome, endereco, telefone, cpf, cep, dataNasc);
+    }
+
     public boolean comprar (Produto p){
       return true;
     }

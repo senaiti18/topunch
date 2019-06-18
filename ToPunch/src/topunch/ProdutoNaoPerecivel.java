@@ -9,6 +9,10 @@ package topunch;
  *
  * @author Senai
  */
-public class ProdutoNaoPerecivel {
+public class ProdutoNaoPerecivel extends Produto {
+
+    public ProdutoNaoPerecivel(String nome, int valor, String categoria, boolean perecivel) {
+        super(nome, valor, categoria, perecivel);
+    }
     
 }

@@ -15,10 +15,7 @@ public class ToPunch {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("oi 3");
-        System.out.println("linha adicionada");
-        Gerente pes = new Gerente("Soranzo", "endereco", "telefone");
-        System.out.println(pes.getNome());
+        
         
         
     }

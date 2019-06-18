@@ -140,7 +140,7 @@ public class Funcionarios extends javax.swing.JFrame {
 
     private void menuClienteAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteAdicionarActionPerformed
         
-        CadastroCliente cad = new CadastroCliente();
+        AdicionarCLiente cad = new AdicionarCLiente();
         jDesktopPane1.add(cad);
         cad.setVisible(true);
     }//GEN-LAST:event_menuClienteAdicionarActionPerformed

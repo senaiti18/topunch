@@ -5,43 +5,196 @@
  */
 package topunch;
 
+import connection.ConnectionFactory;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import topunch.Cliente;
+
 /**
  *
  * @author Senai
  */
 public class ControladorBanco {
-    public boolean inserirProduto (Produto p){
-        return true;
+    public void inserirProduto (Produto p){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("INSERT INTO produto (nome,valor,categoria,perecivel)VALUES(?,?,?,?)");
+            stmt.setString(1, p.getNome());
+            stmt.setInt(2, p.getValor());
+            stmt.setString(3, p.getCategoria());
+            stmt.setBoolean(4, p.getPerecivel());
+            
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorBanco.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao salvar!"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }  
+    
+    public List<Produto> buscarProduto(){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Produto> produtos = new ArrayList<>();
+        
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM produto");
+            rs = stmt.executeQuery();
+            
+            
+            while (rs.next()) {                
+                Produto prod = new Produto("",1,"",true);
+                prod.setNome(rs.getString("nome"));
+                prod.setValor(rs.getInt("valor"));
+                prod.setCategoria(rs.getString("categoria"));
+                prod.setPerecivel(rs.getBoolean("perecivel"));
+         
+                produtos.add(prod);
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Sucesso na query");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no query"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return produtos;
+    }
+    
+    public void deletarProduto(String nome){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("DELETE  FROM PRODUTO WHERE nome = ?");
+            stmt.setString(1, nome);
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+                    
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluido!");
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
     public boolean alterarProduto(Produto p,Produto pNovo){
         return true;
     }
-    //public Produto buscarProduto(int id){
+
+    public void inserirCliente(Cliente c){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
         
-    //}
-    public boolean deletarProduto(){
-        return true;
+        try {
+            stmt = con.prepareStatement("INSERT INTO cliente (nome,endereco,telefone,cpf,cep,dataNasc)VALUES(?,?,?,?,?,?)");
+            stmt.setString(1, c.getNome());
+            stmt.setString(2, c.getEndereco());
+            stmt.setString(3, c.getTelefone());
+            stmt.setString(4, c.getCpf());
+            stmt.setString(5, c.getCep());
+            stmt.setString(6, c.getDataNasc());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorBanco.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao salvar!"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
     }
-    public boolean inserirCliente(Cliente c,String CPF, String CEP, String dataNasc, String Sexo){
-        return true;
+    
+    
+    public List<Cliente> buscarCliente(String cpf){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Cliente> clientes = new ArrayList<>();
+        
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM cliente Where cpf = "+ cpf);
+            rs = stmt.executeQuery();
+            
+            
+            while (rs.next()) {                
+                Cliente cli = new Cliente("","","","","","");
+                cli.setNome(rs.getString("nome"));
+                cli.setEndereco(rs.getString("endereco"));
+                cli.setTelefone(rs.getString("telefone"));
+                cli.setCpf(rs.getString("cpf"));
+                cli.setCep(rs.getString("cep"));
+                cli.setDataNasc(rs.getString("dataNasc"));
+            
+                
+                clientes.add(cli);
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Sucesso na query");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no query"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return clientes;
     }
+    
+    public void deletarCliente(String cpf){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("DELETE  FROM cliente WHERE cpf = ?");
+            stmt.setString(1, cpf);
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+                    
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluido!");
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
     public boolean alterarCliente(Cliente c, Cliente cNovo){
         return true;
     }
-    //public Cliente buscarCliente(){
+    
+    public void inserirPedido(Pedido p){
         
-    //}
-    public boolean deletarCliente(Cliente c){
-        return true;
     }
     
-    public boolean inserirPedido(Pedido p){
-        return true;
-    }
-    
-    public boolean alterarProduto(Pedido p, Pedido pNovo){
-        return true;
-    }
   //  public Pedido buscarPedido(int id){
         
    // }
@@ -49,15 +202,89 @@ public class ControladorBanco {
         return true;
     }
     
-    public boolean adicionarFuncionario(Funcionario f,String DataNasc, String cargo, String departamento,double salario){
-        return true;
-    }
-    
-    public boolean deletarFuncionario(Funcionario f){
-        return true;
-    }
-    
-    //public Funcionario consultarFuncionario(Funcionario f){
+    public void adicionarFuncionario(Funcionario f){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
         
-    //}
+        try {
+            stmt = con.prepareStatement("INSERT INTO funcionario (nome,endereco,telefone,cpf,cep,dataNasc,cargo,salario)VALUES(?,?,?,?,?,?,?,?)");
+            stmt.setString(1, f.getNome());
+            stmt.setString(2, f.getEndereco());
+            stmt.setString(3, f.getTelefone());
+            stmt.setString(4, f.getCpf());
+            stmt.setString(5, f.getCep());
+            stmt.setString(6, f.getDataNasc());
+            stmt.setString(7, f.getCargo());
+            stmt.setDouble(8, f.getSalario());
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Salvo com sucesso");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorBanco.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao salvar!"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
+    
+    public List<Funcionario> buscarFuncionario(String cpf){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Funcionario> funcionario = new ArrayList<>();
+        
+        
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM funcionario Where cpf = "+ cpf);
+            rs = stmt.executeQuery();
+            
+            
+            while (rs.next()) {                
+                Funcionario func = new Funcionario("",0,"","","","","","");
+                func.setNome(rs.getString("nome"));
+                func.setEndereco(rs.getString("endereco"));
+                func.setTelefone(rs.getString("telefone"));
+                func.setCpf(rs.getString("cpf"));
+                func.setCep(rs.getString("cep"));
+                func.setDataNasc(rs.getString("dataNasc"));
+                func.setCargo(rs.getString("cargo"));
+                func.setSalario(rs.getDouble("salario"));
+            
+                
+                funcionario.add(func);
+            }
+            
+            
+            JOptionPane.showMessageDialog(null, "Sucesso na query");
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro no query"+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return funcionario;
+    }
+    
+    public void deletarFuncionario(String cpf){
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("DELETE  FROM funcionario WHERE cpf = ?");
+            stmt.setString(1, cpf);
+            
+            stmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Excluido com Sucesso!");
+                    
+            } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Excluido!");
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }
+    }
 }

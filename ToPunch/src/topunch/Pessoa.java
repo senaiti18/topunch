@@ -13,14 +13,19 @@ public class Pessoa {
     private String  nome;
     private String endereco;
     private String telefone;
-    
+    private String cpf;
+    private String cep;
+    private String dataNasc;
 
-    public Pessoa(String nome, String endereco, String telefone) {
+    public Pessoa(String nome, String endereco, String telefone, String cpf, String cep, String dataNasc) {
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
-        
+        this.cpf = cpf;
+        this.cep = cep;
+        this.dataNasc = dataNasc;
     }
+  
 
     public String getNome() {
         return nome;
@@ -44,6 +49,30 @@ public class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getDataNasc() {
+        return dataNasc;
+    }
+
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
     

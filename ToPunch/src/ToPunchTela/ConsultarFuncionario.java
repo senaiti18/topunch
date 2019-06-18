@@ -7,41 +7,42 @@ package ToPunchTela;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import topunch.Cliente;
 import topunch.ControladorBanco;
 import topunch.Funcionario;
+import topunch.Produto;
 
 /**
  *
- * @author Senai
+ * @author guinh
  */
-public class DeletarFuncionario extends javax.swing.JInternalFrame {
+public class ConsultarFuncionario extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form DeletarFuncionario
+     * Creates new form ConsultarFuncionario
      */
-    public DeletarFuncionario() {
+    public ConsultarFuncionario() {
         initComponents();
-        DefaultTableModel modelo = (DefaultTableModel) jTFuncionario.getModel();
+    DefaultTableModel modelo = (DefaultTableModel) jTFuncionario.getModel();
         jTFuncionario.setRowSorter(new TableRowSorter(modelo));
     }
     
     public void readJTable(){
+        ControladorBanco ctrl = new ControladorBanco();
         DefaultTableModel modelo = (DefaultTableModel) jTFuncionario.getModel();
         modelo.setNumRows(0);
-        ControladorBanco ctrl = new ControladorBanco();
         
-        for(Funcionario fun: ctrl.buscarFuncionario(txtCPF.getText())){
+        
+        
+        for(Funcionario f: ctrl.buscarFuncionario(txtCPF.getText())){
             modelo.addRow(new Object[]{
-                fun.getNome(),
-                fun.getEndereco(),
-                fun.getTelefone(),
-                fun.getCpf(),
-                fun.getCep(),
-                fun.getDataNasc(),
-                fun.getCargo(),
-                fun.getSalario()
-                
+                f.getNome(),
+                f.getEndereco(),
+                f.getTelefone(),
+                f.getCpf(),
+                f.getCep(),
+                f.getDataNasc(),
+                f.getCargo(),
+                f.getSalario()
             });
         }
     }
@@ -55,27 +56,15 @@ public class DeletarFuncionario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTFuncionario = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtCPF = new javax.swing.JTextField();
-        btnConsultar = new javax.swing.JButton();
-        btnDeletar = new javax.swing.JButton();
+        btnConfirmar = new javax.swing.JButton();
 
-        jInternalFrame1.setVisible(true);
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jButton1.setText("Consultar");
 
         setClosable(true);
 
@@ -84,11 +73,11 @@ public class DeletarFuncionario extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome", "Endereço", "Telefone", "CPF", "CEP", "Data de Nascimento", "Cargo", "Salario"
+                "Nome", "Endereço", "Telefone", "CPF", "CEP", "Data de Nascimento", "Cargo", "Salariol"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -99,17 +88,10 @@ public class DeletarFuncionario extends javax.swing.JInternalFrame {
 
         jLabel1.setText("CPF:");
 
-        btnConsultar.setText("Consultar");
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
-            }
-        });
-
-        btnDeletar.setText("Deletar");
-        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeletarActionPerformed(evt);
+                btnConfirmarActionPerformed(evt);
             }
         });
 
@@ -117,31 +99,30 @@ public class DeletarFuncionario extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
-                        .addComponent(btnConsultar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDeletar)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConfirmar)
+                        .addGap(100, 100, 100))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(8, 8, 8)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDeletar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnConfirmar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -158,21 +139,14 @@ public class DeletarFuncionario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         readJTable();
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
-        ControladorBanco ctrl = new ControladorBanco();
-        ctrl.deletarFuncionario(txtCPF.getText());
-        readJTable();
-    }//GEN-LAST:event_btnDeletarActionPerformed
+    }//GEN-LAST:event_btnConfirmarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultar;
-    private javax.swing.JButton btnDeletar;
-    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JButton btnConfirmar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

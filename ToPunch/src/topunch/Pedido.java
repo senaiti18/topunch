@@ -12,49 +12,18 @@ import java.util.ArrayList;
  * @author Senai
  */
 public class Pedido {
-    private int ABERTO;
-    private int FECHADO;
-    private int PAGO;
     private ArrayList<Produto> aProdutos;
     private Cliente cliente;
     private int status;
-    
 
-    public Pedido(int ABERTO, int FECHADO, int PAGO, Produto aProdutos, Cliente cliente, int status) {
-        this.ABERTO = ABERTO;
-        this.FECHADO = FECHADO;
-        this.PAGO = PAGO;
-        this.aProdutos.add(aProdutos);
+    public Pedido(ArrayList<Produto> aProdutos, Cliente cliente, int status) {
+        this.aProdutos = aProdutos;
         this.cliente = cliente;
         this.status = status;
-        
-    }
-
-    public int getABERTO() {
-        return ABERTO;
-    }
-
-    public void setABERTO(int ABERTO) {
-        this.ABERTO = ABERTO;
     }
     
 
-    public int getFECHADO() {
-        return FECHADO;
-    }
-
-    public void setFECHADO(int FECHADO) {
-        this.FECHADO = FECHADO;
-    }
     
-
-    public int getPAGO() {
-        return PAGO;
-    }
-
-    public void setPAGO(int PAGO) {
-        this.PAGO = PAGO;
-    }
     
 
     public ArrayList<Produto> getaProdutos() {

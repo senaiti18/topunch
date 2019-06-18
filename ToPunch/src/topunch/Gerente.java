@@ -11,13 +11,10 @@ package topunch;
  */
 public class Gerente extends Pessoa {
     
-    
-    
-     public Gerente (String nome,String endereco,String telefone){
-        super(nome,endereco,telefone);
-     }
-     
-     
+    public Gerente(String nome, String endereco, String telefone, String cpf, String cep, String dataNasc) {
+        super(nome, endereco, telefone, cpf, cep, dataNasc);
+    }
+
      public boolean inserirProduto (Produto p){
          return true;
      }

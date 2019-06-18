@@ -163,9 +163,10 @@ public class AdicionarFuncionario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Funcionario newFunc = new Funcionario(txtNome.getText(), txtEndereco.getText(), txtTelefone.getText());
-        ctrl.adicionarFuncionario(newFunc, txtDateNasc.getText(), txtCargo.getText(), txtDepartamento.getText(),
-                Double.parseDouble(txtSalario.getText()));
+        Funcionario func = new Funcionario(txtCargo.getText(), Double.parseDouble(txtSalario.getText()), txtNome.getText(), txtEndereco.getText(),
+                txtTelefone.getText(), txtCPF.getText(), txtCEP.getText(), txtDateNasc.getText());
+        ControladorBanco ctrl = new ControladorBanco();
+        ctrl.adicionarFuncionario(func);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
 

@@ -1,8 +1,12 @@
 
+import ToPunchTela.AdicionarProduto;
 import ToPunchTela.AtualizarFuncionario;
 import ToPunchTela.Caixa;
 import ToPunchTela.ConsultarCliente;
+import ToPunchTela.ConsultarFuncionario;
+import ToPunchTela.ConsultarProduto;
 import ToPunchTela.DeletarFuncionario;
+import ToPunchTela.DeletarProduto;
 import ToPunchTela.Departamentos;
 import ToPunchTela.Horarios;
 
@@ -55,6 +59,10 @@ public class Gerentes extends javax.swing.JFrame {
         menuFuncionariosSearch = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         menuEntrega = new javax.swing.JMenuItem();
+        AdicionarProd = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         JCaixa = new javax.swing.JMenu();
         menuCaixa = new javax.swing.JMenuItem();
 
@@ -198,12 +206,17 @@ public class Gerentes extends javax.swing.JFrame {
 
         menuFuncionariosSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/zoom.png"))); // NOI18N
         menuFuncionariosSearch.setText("Consultar");
+        menuFuncionariosSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFuncionariosSearchActionPerformed(evt);
+            }
+        });
         jMenu3.add(menuFuncionariosSearch);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/package.png"))); // NOI18N
-        jMenu4.setText("Entregas");
+        jMenu4.setText("Produtos");
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu4ActionPerformed(evt);
@@ -218,6 +231,33 @@ public class Gerentes extends javax.swing.JFrame {
             }
         });
         jMenu4.add(menuEntrega);
+
+        AdicionarProd.setText("Adicionar");
+        AdicionarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdicionarProdActionPerformed(evt);
+            }
+        });
+        jMenu4.add(AdicionarProd);
+
+        jMenuItem1.setText("Consultar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
+        jMenuItem2.setText("Remover");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem2);
+
+        jMenuItem3.setText("Atualizar");
+        jMenu4.add(jMenuItem3);
 
         jMenuBar1.add(jMenu4);
 
@@ -263,7 +303,7 @@ public class Gerentes extends javax.swing.JFrame {
     }//GEN-LAST:event_menuEntregaActionPerformed
 
     private void menuClientesAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesAdicionarActionPerformed
-            CadastroCliente cad = new CadastroCliente();
+            AdicionarCLiente cad = new AdicionarCLiente();
             jDesktopPane1.add(cad);
             cad.setVisible(true);
     }//GEN-LAST:event_menuClientesAdicionarActionPerformed
@@ -340,6 +380,30 @@ public class Gerentes extends javax.swing.JFrame {
         atuFun.setVisible(true);
     }//GEN-LAST:event_menuPedidosAtualizarActionPerformed
 
+    private void AdicionarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarProdActionPerformed
+        AdicionarProduto addProd = new AdicionarProduto();
+        jDesktopPane1.add(addProd);
+        addProd.setVisible(true);
+    }//GEN-LAST:event_AdicionarProdActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        ConsultarProduto consultProd = new ConsultarProduto();
+        jDesktopPane1.add(consultProd);
+        consultProd.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menuFuncionariosSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFuncionariosSearchActionPerformed
+        ConsultarFuncionario consultFunc = new ConsultarFuncionario();
+        jDesktopPane1.add(consultFunc);
+        consultFunc.setVisible(true);
+    }//GEN-LAST:event_menuFuncionariosSearchActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        DeletarProduto delProd = new DeletarProduto();
+        jDesktopPane1.add(delProd);
+        delProd.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -376,12 +440,16 @@ public class Gerentes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem AdicionarProd;
     private javax.swing.JMenu JCaixa;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem menuCaixa;
     private javax.swing.JMenu menuClientes;
     private javax.swing.JMenuItem menuClientesAdicionar;
