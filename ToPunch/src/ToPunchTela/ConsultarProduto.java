@@ -57,6 +57,7 @@ public class ConsultarProduto extends javax.swing.JInternalFrame {
         btnConsultar = new javax.swing.JButton();
 
         setClosable(true);
+        setMaximizable(true);
 
         jTProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

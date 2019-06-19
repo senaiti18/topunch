@@ -87,6 +87,7 @@ public class ConsultarCliente extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setClosable(true);
+        setMaximizable(true);
         setEnabled(false);
 
         jInternalFrame1.setClosable(true);

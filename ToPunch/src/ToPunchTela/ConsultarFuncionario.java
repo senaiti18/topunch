@@ -67,6 +67,7 @@ public class ConsultarFuncionario extends javax.swing.JInternalFrame {
         jButton1.setText("Consultar");
 
         setClosable(true);
+        setMaximizable(true);
 
         jTFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

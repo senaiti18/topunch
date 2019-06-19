@@ -37,7 +37,6 @@ public class Funcionarios extends javax.swing.JFrame {
         menuPedidoAdicionar = new javax.swing.JMenuItem();
         menuPedidoAtualizar = new javax.swing.JMenuItem();
         menuPedidoConsultar = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,10 +108,6 @@ public class Funcionarios extends javax.swing.JFrame {
         jMenu2.add(menuPedidoConsultar);
 
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/user_suit.png"))); // NOI18N
-        jMenu3.setText("Bater Ponto");
-        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -198,7 +193,6 @@ public class Funcionarios extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuClienteAdicionar;
     private javax.swing.JMenuItem menuClienteAtualizar;
